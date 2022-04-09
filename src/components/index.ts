@@ -1,2 +1,4 @@
 import AppRouter from "./AppRouter"
-export { AppRouter }
+import LoginForm from "./LoginForm"
+import RegistrationForm from "./RegistrationForm"
+export { AppRouter, LoginForm, RegistrationForm }
