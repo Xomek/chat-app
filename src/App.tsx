@@ -1,5 +1,11 @@
+import { AppRouter } from "./components";
+
 const App = () => {
-   return <div></div>;
+   return (
+      <div>
+         <AppRouter />
+      </div>
+   );
 };
 
 export default App;
