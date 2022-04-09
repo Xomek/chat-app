@@ -5,10 +5,14 @@ import styles from "./Title.module.scss";
 
 export interface TitleProps extends BaseComponent {}
 
-const Title: FC<TitleProps> = ({ className, children }) => {
+const Title: FC<TitleProps> = ({ className, children, ...props }) => {
    const TitleStyles = mcl(styles.title, className);
 
-   return <div className={TitleStyles}>{children}</div>;
+   return (
+      <div className={TitleStyles} {...props}>
+         {children}
+      </div>
+   );
 };
 
 export default Title;
