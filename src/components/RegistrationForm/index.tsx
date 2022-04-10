@@ -1,10 +1,29 @@
 import { Formik } from "formik";
+import { BaseComponent } from "../../interfaces/BaseComponent.interface";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import * as yup from "yup";
+import { mcl } from "../../misc/myClassNames";
 import styles from "./RegistrationForm.module.scss";
 
 import { Button, Form, Input } from "../UI";
 
-const RegistrationForm = () => {
+interface RegistrationFormProps extends BaseComponent {}
+
+const RegistrationForm = ({ className }: RegistrationFormProps) => {
+   const RegistrationFormStyles = mcl(styles.registrationform, className);
+
+   const handleRegistration = (email: string, password: string) => {
+      const auth = getAuth();
+      createUserWithEmailAndPassword(auth, email, password)
+         .then(({ user }) => {
+            console.log(user);
+         })
+         .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+         });
+   };
+
    const validatationSchema = yup.object({
       email: yup.string().email("Не верный email").required("Обязательное поле"),
       password: yup.string().min(6).required("Обязательное поле"),
@@ -13,16 +32,17 @@ const RegistrationForm = () => {
          .oneOf([yup.ref("password")], "Пароли не совпадают")
          .required("Обязательное поле"),
    });
+
    return (
       <Formik
          initialValues={{ email: "", password: "", confirm: "" }}
          onSubmit={(values) => {
-            console.log(values);
+            handleRegistration(values.email, values.password);
          }}
          validationSchema={validatationSchema}
       >
          {({ values, errors, touched, handleChange, handleSubmit, isValid, dirty }) => (
-            <Form className={styles.registrationform}>
+            <Form className={RegistrationFormStyles}>
                <label htmlFor={"email"}>Почта</label>
                <Input type="text" name="email" onChange={handleChange} value={values.email} />
                {touched.email && errors.email && <div>{errors.email}</div>}
