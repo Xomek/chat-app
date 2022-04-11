@@ -1,6 +1,7 @@
 import { Formik } from "formik";
 import { BaseComponent } from "../../interfaces/BaseComponent.interface";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { useAppDispath } from "../../redux/hooks";
+import { asyncCreateUserCreator } from "../../redux/actions/user";
 import * as yup from "yup";
 import { mcl } from "../../misc/myClassNames";
 import styles from "./RegistrationForm.module.scss";
@@ -12,16 +13,10 @@ interface RegistrationFormProps extends BaseComponent {}
 const RegistrationForm = ({ className }: RegistrationFormProps) => {
    const RegistrationFormStyles = mcl(styles.registrationform, className);
 
+   const dispatch = useAppDispath();
+
    const handleRegistration = (email: string, password: string) => {
-      const auth = getAuth();
-      createUserWithEmailAndPassword(auth, email, password)
-         .then(({ user }) => {
-            console.log(user);
-         })
-         .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-         });
+      dispatch(asyncCreateUserCreator({ email, password }));
    };
 
    const validatationSchema = yup.object({

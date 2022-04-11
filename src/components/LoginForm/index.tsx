@@ -1,7 +1,8 @@
 import { Formik } from "formik";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { BaseComponent } from "../../interfaces/BaseComponent.interface";
 import * as yup from "yup";
+import { asyncLoginUserCreator } from "../../redux/actions/user";
+import { useAppDispath } from "../../redux/hooks";
 import { mcl } from "../../misc/myClassNames";
 import styles from "./LoginForm.module.scss";
 
@@ -12,16 +13,10 @@ interface LoginFormProps extends BaseComponent {}
 const LoginForm = ({ className }: LoginFormProps) => {
    const LoginFormStyles = mcl(styles.loginform, className);
 
+   const dispatch = useAppDispath();
+
    const handleLogin = (email: string, password: string) => {
-      const auth = getAuth();
-      signInWithEmailAndPassword(auth, email, password)
-         .then((userCredential) => {
-            const user = userCredential.user;
-         })
-         .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-         });
+      dispatch(asyncLoginUserCreator({ email, password }));
    };
 
    const validatationSchema = yup.object({
