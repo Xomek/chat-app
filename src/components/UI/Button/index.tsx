@@ -4,11 +4,12 @@ import { mcl } from "../../../misc/myClassNames";
 import styles from "./Button.module.scss";
 
 export interface ButtonProps extends BaseComponent, ButtonHTMLAttributes<HTMLButtonElement> {
+   border?: boolean;
    onClick: () => void;
 }
 
-const Button: FC<ButtonProps> = ({ className, children, onClick, ...props }) => {
-   const ButtonStyles = mcl(styles.button, className);
+const Button: FC<ButtonProps> = ({ className, children, onClick, border, ...props }) => {
+   const ButtonStyles = mcl(styles.button, className, { [styles.border]: border });
 
    return (
       <button

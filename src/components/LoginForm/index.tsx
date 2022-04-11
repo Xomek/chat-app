@@ -7,6 +7,7 @@ import { mcl } from "../../misc/myClassNames";
 import styles from "./LoginForm.module.scss";
 
 import { Button, Form, Input } from "../UI";
+import { Title } from "../common";
 
 interface LoginFormProps extends BaseComponent {}
 
@@ -32,14 +33,26 @@ const LoginForm = ({ className }: LoginFormProps) => {
          validationSchema={validatationSchema}
       >
          {({ values, errors, touched, handleChange, handleSubmit, isValid, dirty }) => (
-            <Form className={LoginFormStyles}>
-               <label htmlFor="name">Почта</label>
-               <Input type="text" name="email" onChange={handleChange} value={values.email} />
-               {touched.email && errors.email && <div>{errors.email}</div>}
-               <label htmlFor="password">Пароль</label>
-               <Input type="password" name="password" onChange={handleChange} value={values.password} />
-               {touched.password && errors.password && <div>{errors.password}</div>}
-               <Button type="submit" disabled={!isValid && !dirty} onClick={handleSubmit}>
+            <Form auth className={LoginFormStyles}>
+               <Title formMode className={styles.title}>
+                  Авторизация
+               </Title>
+               <label className={styles.label} htmlFor="name">
+                  Почта
+               </label>
+               <div className={styles.item}>
+                  <Input type="text" name="email" onChange={handleChange} value={values.email} />
+                  {touched.email && errors.email && <div className={styles.error}>{errors.email}</div>}
+               </div>
+
+               <label className={styles.label} htmlFor="password">
+                  Пароль
+               </label>
+               <div className={styles.item}>
+                  <Input type="password" name="password" onChange={handleChange} value={values.password} />
+                  {touched.password && errors.password && <div className={styles.error}>{errors.password}</div>}
+               </div>
+               <Button className={styles.button} border type="submit" disabled={!isValid && !dirty} onClick={handleSubmit}>
                   Войти
                </Button>
             </Form>

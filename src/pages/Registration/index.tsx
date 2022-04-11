@@ -4,7 +4,6 @@ import { ReactElement } from "react";
 import { mcl } from "../../misc/myClassNames";
 import styles from "./Registration.module.scss";
 
-import { Title } from "../../components/common";
 import { RegistrationForm } from "../../components";
 
 export interface RegistrationProps extends BaseComponent {}
@@ -14,8 +13,11 @@ const Registration: FC<RegistrationProps> = ({ className }): ReactElement => {
 
    return (
       <div className={RegistrationStyles}>
-         <Title>Регистрация</Title>
-         <RegistrationForm />
+         <div className="container">
+            <div className={styles.inner}>
+               <RegistrationForm />
+            </div>
+         </div>
       </div>
    );
 };

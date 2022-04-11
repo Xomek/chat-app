@@ -7,6 +7,7 @@ import { mcl } from "../../misc/myClassNames";
 import styles from "./RegistrationForm.module.scss";
 
 import { Button, Form, Input } from "../UI";
+import { Title } from "../common";
 
 interface RegistrationFormProps extends BaseComponent {}
 
@@ -37,17 +38,33 @@ const RegistrationForm = ({ className }: RegistrationFormProps) => {
          validationSchema={validatationSchema}
       >
          {({ values, errors, touched, handleChange, handleSubmit, isValid, dirty }) => (
-            <Form className={RegistrationFormStyles}>
-               <label htmlFor={"email"}>Почта</label>
-               <Input type="text" name="email" onChange={handleChange} value={values.email} />
-               {touched.email && errors.email && <div>{errors.email}</div>}
-               <label htmlFor={"password"}>Пароль</label>
-               <Input type="password" name="password" onChange={handleChange} value={values.password} />
-               {touched.password && errors.password && <div>{errors.password}</div>}
-               <label htmlFor={"confirm"}>Подтвердите пароль</label>
-               <Input type="password" name="confirm" onChange={handleChange} value={values.confirm} />
-               {touched.confirm && errors.confirm && <div>{errors.confirm}</div>}
-               <Button type="submit" disabled={!isValid && !dirty} onClick={handleSubmit}>
+            <Form auth className={RegistrationFormStyles}>
+               <Title formMode className={styles.title}>
+                  Регистрация
+               </Title>
+               <label className={styles.label} htmlFor={"email"}>
+                  Почта
+               </label>
+               <div className={styles.item}>
+                  <Input type="text" name="email" onChange={handleChange} value={values.email} />
+                  {touched.email && errors.email && <div className={styles.error}>{errors.email}</div>}
+               </div>
+               <label className={styles.label} htmlFor={"password"}>
+                  Пароль
+               </label>
+               <div className={styles.item}>
+                  <Input type="password" name="password" onChange={handleChange} value={values.password} />
+                  {touched.password && errors.password && <div className={styles.error}>{errors.password}</div>}
+               </div>
+               <label className={styles.label} htmlFor={"confirm"}>
+                  Подтвердите пароль
+               </label>
+               <div className={styles.item}>
+                  <Input type="password" name="confirm" onChange={handleChange} value={values.confirm} />
+                  {touched.confirm && errors.confirm && <div className={styles.error}>{errors.confirm}</div>}
+               </div>
+
+               <Button className={styles.button} border type="submit" disabled={!isValid && !dirty} onClick={handleSubmit}>
                   Регистрация
                </Button>
             </Form>
