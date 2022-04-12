@@ -1,7 +1,7 @@
 import { Formik } from "formik";
 import { BaseComponent } from "../../interfaces/BaseComponent.interface";
-import * as yup from "yup";
 import { asyncLoginUserCreator } from "../../redux/actions/user";
+import { validatationLogin } from "../../yup/login.shema";
 import { useAppDispath } from "../../redux/hooks";
 import { mcl } from "../../misc/myClassNames";
 import styles from "./LoginForm.module.scss";
@@ -20,17 +20,13 @@ const LoginForm = ({ className }: LoginFormProps) => {
       dispatch(asyncLoginUserCreator({ email, password }));
    };
 
-   const validatationSchema = yup.object({
-      email: yup.string().email("Не верный email").required("Обязательное поле"),
-      password: yup.string().min(6).required("Обязательное поле"),
-   });
    return (
       <Formik
          initialValues={{ email: "", password: "" }}
          onSubmit={(values) => {
             handleLogin(values.email, values.password);
          }}
-         validationSchema={validatationSchema}
+         validationSchema={validatationLogin}
       >
          {({ values, errors, touched, handleChange, handleSubmit, isValid, dirty }) => (
             <Form auth className={LoginFormStyles}>

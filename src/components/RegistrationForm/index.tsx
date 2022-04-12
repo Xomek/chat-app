@@ -1,8 +1,8 @@
 import { Formik } from "formik";
 import { BaseComponent } from "../../interfaces/BaseComponent.interface";
 import { useAppDispath } from "../../redux/hooks";
+import { validatationReg } from "../../yup/registrations.shema";
 import { asyncCreateUserCreator } from "../../redux/actions/user";
-import * as yup from "yup";
 import { mcl } from "../../misc/myClassNames";
 import styles from "./RegistrationForm.module.scss";
 
@@ -20,22 +20,13 @@ const RegistrationForm = ({ className }: RegistrationFormProps) => {
       dispatch(asyncCreateUserCreator({ email, password }));
    };
 
-   const validatationSchema = yup.object({
-      email: yup.string().email("Не верный email").required("Обязательное поле"),
-      password: yup.string().min(6).required("Обязательное поле"),
-      confirm: yup
-         .string()
-         .oneOf([yup.ref("password")], "Пароли не совпадают")
-         .required("Обязательное поле"),
-   });
-
    return (
       <Formik
          initialValues={{ email: "", password: "", confirm: "" }}
          onSubmit={(values) => {
             handleRegistration(values.email, values.password);
          }}
-         validationSchema={validatationSchema}
+         validationSchema={validatationReg}
       >
          {({ values, errors, touched, handleChange, handleSubmit, isValid, dirty }) => (
             <Form auth className={RegistrationFormStyles}>
