@@ -33,21 +33,24 @@ const LoginForm = ({ className }: LoginFormProps) => {
                <Title formMode className={styles.title}>
                   Авторизация
                </Title>
-               <label className={styles.label} htmlFor="name">
-                  Почта
-               </label>
-               <div className={styles.item}>
-                  <Input type="text" name="email" onChange={handleChange} value={values.email} />
-                  {touched.email && errors.email && <div className={styles.error}>{errors.email}</div>}
-               </div>
-
-               <label className={styles.label} htmlFor="password">
-                  Пароль
-               </label>
-               <div className={styles.item}>
-                  <Input type="password" name="password" onChange={handleChange} value={values.password} />
-                  {touched.password && errors.password && <div className={styles.error}>{errors.password}</div>}
-               </div>
+               <Input
+                  type="text"
+                  name="email"
+                  label="Почта"
+                  onChange={handleChange}
+                  value={values.email}
+                  errors={errors.email}
+                  touched={touched.email}
+               />
+               <Input
+                  type="password"
+                  name="password"
+                  label="Пароль"
+                  onChange={handleChange}
+                  value={values.password}
+                  errors={errors.password}
+                  touched={touched.password}
+               />
                <Button className={styles.button} border type="submit" disabled={!isValid && !dirty} onClick={handleSubmit}>
                   Войти
                </Button>

@@ -33,27 +33,33 @@ const RegistrationForm = ({ className }: RegistrationFormProps) => {
                <Title formMode className={styles.title}>
                   Регистрация
                </Title>
-               <label className={styles.label} htmlFor={"email"}>
-                  Почта
-               </label>
-               <div className={styles.item}>
-                  <Input type="text" name="email" onChange={handleChange} value={values.email} />
-                  {touched.email && errors.email && <div className={styles.error}>{errors.email}</div>}
-               </div>
-               <label className={styles.label} htmlFor={"password"}>
-                  Пароль
-               </label>
-               <div className={styles.item}>
-                  <Input type="password" name="password" onChange={handleChange} value={values.password} />
-                  {touched.password && errors.password && <div className={styles.error}>{errors.password}</div>}
-               </div>
-               <label className={styles.label} htmlFor={"confirm"}>
-                  Подтвердите пароль
-               </label>
-               <div className={styles.item}>
-                  <Input type="password" name="confirm" onChange={handleChange} value={values.confirm} />
-                  {touched.confirm && errors.confirm && <div className={styles.error}>{errors.confirm}</div>}
-               </div>
+               <Input
+                  type="text"
+                  name="email"
+                  label="Почта"
+                  onChange={handleChange}
+                  value={values.email}
+                  errors={errors.email}
+                  touched={touched.email}
+               />
+               <Input
+                  type="password"
+                  name="password"
+                  label="Пароль"
+                  onChange={handleChange}
+                  value={values.password}
+                  errors={errors.password}
+                  touched={touched.password}
+               />
+               <Input
+                  type="password"
+                  name="confirm"
+                  label="Подтвердите пароль"
+                  onChange={handleChange}
+                  value={values.confirm}
+                  errors={errors.confirm}
+                  touched={touched.confirm}
+               />
 
                <Button className={styles.button} border type="submit" disabled={!isValid && !dirty} onClick={handleSubmit}>
                   Регистрация

@@ -6,35 +6,3 @@
    margin-top: 10px;
 }
 
-.label {
-   width: 80%;
-}
-
-.item {
-   position: relative;
-   width: 100%;
-   display: flex;
-   justify-content: center;
-}
-
-.error {
-   position: absolute;
-   right: 40px;
-   top: -40px;
-   padding: 5px 10px;
-   background-color: #fff;
-   border-radius: 4px;
-   color: #eb1227;
-   font-weight: 700;
-   margin-bottom: 10px;
-   &:before {
-      content: "";
-      position: absolute;
-      left: 20px;
-      top: 18px;
-      border-top: 13px solid transparent;
-      border-right: 26px solid #fff;
-      border-bottom: 13px solid transparent;
-      transform: rotate(30deg);
-   }
-}
