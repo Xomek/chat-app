@@ -1,10 +1,12 @@
-export const CREATE_USER = "CREATE_USER";
+export const ASYNC_CREATE_USER = "ASYNC_CREATE_USER";
 export const CREATE_USER_SUCCESS = "CREATE_USER_SUCCESS";
 export const CREATE_USER_FAIL = "CREATE_USER_FAIL";
+export const CREATE_USER = "CREATE_USER";
 
-export const LOGIN_USER = "LOGIN_USER";
+export const ASYNC_LOGIN_USER = "ASYNC_LOGIN_USER";
 export const LOGIN_USER_SUCCESS = "LOGIN_USER_SUCCESS";
-export const LOGIN_USER_FAIL = "CREATE_USER_FAIL";
+export const LOGIN_USER_FAIL = "LOGIN_USER_FAIL";
+export const LOGIN_USER = "LOGIN_USER";
 
-export const SET_USER = "SET_USER";
+export const LOADING_USER = "LOADING_USER";
 export const CLEAR_USER = "CLEAR_USER";
