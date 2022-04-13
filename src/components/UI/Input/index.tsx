@@ -16,12 +16,12 @@ const Input = ({ className, label, errors, touched, ...props }: InputProps) => {
       <>
          <label className={styles.label}>{label}</label>
          <div className={styles.item}>
-            <input {...props} className={InputStyles} />
+            <input {...props} className={InputStyles} autoComplete="off" />
             {touched && errors && touched && errors && <div className={styles.error}>{errors}</div>}
          </div>
       </>
    ) : (
-      <input className={InputStyles} {...props} />
+      <input className={InputStyles} {...props} autoComplete="off" />
    );
 };
 

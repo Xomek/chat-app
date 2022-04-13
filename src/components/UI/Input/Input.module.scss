@@ -17,6 +17,7 @@
    position: absolute;
    right: 40px;
    top: -40px;
+   font-size: 12px;
    padding: 5px 10px;
    background-color: #fff;
    border-radius: 4px;
@@ -26,11 +27,11 @@
    &:before {
       content: "";
       position: absolute;
-      left: 20px;
-      top: 18px;
-      border-top: 13px solid transparent;
-      border-right: 26px solid #fff;
-      border-bottom: 13px solid transparent;
+      left: 6px;
+      top: 12px;
+      border-top: 10px solid transparent;
+      border-right: 22px solid #fff;
+      border-bottom: 10px solid transparent;
       transform: rotate(30deg);
    }
 }
