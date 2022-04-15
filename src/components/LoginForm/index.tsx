@@ -2,7 +2,7 @@ import { Formik } from "formik";
 import { BaseComponent } from "../../interfaces/BaseComponent.interface";
 import { asyncLoginUserCreator } from "../../redux/actions/user";
 import { validatationLogin } from "../../yup/login.shema";
-import { useAppDispath } from "../../redux/hooks";
+import { useAppDispath, useAppSelector } from "../../redux/hooks";
 import { mcl } from "../../misc/myClassNames";
 import styles from "./LoginForm.module.scss";
 
@@ -12,6 +12,7 @@ import { Title } from "../common";
 interface LoginFormProps extends BaseComponent {}
 
 const LoginForm = ({ className }: LoginFormProps) => {
+   const serverError = useAppSelector((state) => state.user.error);
    const LoginFormStyles = mcl(styles.loginform, className);
 
    const dispatch = useAppDispath();
@@ -30,6 +31,7 @@ const LoginForm = ({ className }: LoginFormProps) => {
       >
          {({ values, errors, touched, handleChange, handleSubmit, isValid, dirty }) => (
             <Form auth className={LoginFormStyles}>
+               {serverError && <div className={styles.serverError}>{serverError}</div>}
                <Title formMode className={styles.title}>
                   Авторизация
                </Title>

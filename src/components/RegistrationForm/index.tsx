@@ -1,6 +1,6 @@
 import { Formik } from "formik";
 import { BaseComponent } from "../../interfaces/BaseComponent.interface";
-import { useAppDispath } from "../../redux/hooks";
+import { useAppDispath, useAppSelector } from "../../redux/hooks";
 import { validatationReg } from "../../yup/registrations.shema";
 import { asyncCreateUserCreator } from "../../redux/actions/user";
 import { mcl } from "../../misc/myClassNames";
@@ -12,6 +12,7 @@ import { Title } from "../common";
 interface RegistrationFormProps extends BaseComponent {}
 
 const RegistrationForm = ({ className }: RegistrationFormProps) => {
+   const serverError = useAppSelector((state) => state.user.error);
    const RegistrationFormStyles = mcl(styles.registrationform, className);
 
    const dispatch = useAppDispath();
@@ -30,6 +31,7 @@ const RegistrationForm = ({ className }: RegistrationFormProps) => {
       >
          {({ values, errors, touched, handleChange, handleSubmit, isValid, dirty }) => (
             <Form auth className={RegistrationFormStyles}>
+               {serverError && <div className={styles.serverError}>{serverError}</div>}
                <Title formMode className={styles.title}>
                   Регистрация
                </Title>
