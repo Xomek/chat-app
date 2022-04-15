@@ -11,3 +11,4 @@ export const LOGIN_USER = "LOGIN_USER";
 export const ASYNC_RESET_PASSWORD = "ASYNC_RESET_PASSWORD";
 export const LOADING_USER = "LOADING_USER";
 export const CLEAR_USER = "CLEAR_USER";
+export const AUTH_USER = "AUTH_USER";

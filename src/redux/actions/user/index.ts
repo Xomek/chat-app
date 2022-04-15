@@ -13,6 +13,7 @@ import {
    CREATE_USER_FAIL,
    LOADING_USER,
    ASYNC_RESET_PASSWORD,
+   AUTH_USER,
 } from "../../types";
 
 export const asyncLoginUserCreator = (payload: userCredentials) => {
@@ -57,4 +58,8 @@ export const loadingUser = () => {
 
 export const clearUserCreator = () => {
    return { type: CLEAR_USER };
+};
+
+export const authUser = (payload: boolean) => {
+   return { type: AUTH_USER, payload };
 };

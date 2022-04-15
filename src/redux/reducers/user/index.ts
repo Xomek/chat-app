@@ -1,5 +1,6 @@
 import { IUser } from "../../../interfaces/user.interface";
 import {
+   AUTH_USER,
    CLEAR_USER,
    CREATE_USER,
    CREATE_USER_FAIL,
@@ -14,6 +15,7 @@ interface UserState {
    user: IUser;
    loading: boolean;
    error: "";
+   isAuth: boolean;
    accessToken: string;
 }
 
@@ -24,6 +26,7 @@ const initialState: UserState = {
    },
    loading: false,
    error: "",
+   isAuth: false,
    accessToken: "",
 };
 
@@ -83,6 +86,12 @@ const userReducer = (state = initialState, action: any) => {
                email: "",
             },
             accessToken: "",
+         };
+      }
+      case AUTH_USER: {
+         return {
+            ...state,
+            isAuth: action.payload,
          };
       }
       default:

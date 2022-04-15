@@ -8,7 +8,7 @@ interface HomeProps extends BaseComponent {}
 const Home: FC<HomeProps> = ({ className }) => {
    const HomeStyles = mcl("page", styles.home, className);
 
-   return <div className={HomeStyles}></div>;
+   return <div className={HomeStyles}>asd</div>;
 };
 
 export default Home;

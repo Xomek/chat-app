@@ -39,7 +39,6 @@ async function resetPassword(email: string) {
    const auth = getAuth();
    return sendPasswordResetEmail(auth, email)
       .then((data) => {
-         console.log(2);
          return data;
       })
       .catch((error) => {
