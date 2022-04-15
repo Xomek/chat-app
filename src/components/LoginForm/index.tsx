@@ -1,6 +1,7 @@
 import { Formik } from "formik";
 import { BaseComponent } from "../../interfaces/BaseComponent.interface";
 import { asyncLoginUserCreator } from "../../redux/actions/user";
+import { userCredentials } from "../../interfaces/userCredentials.interface";
 import { validatationLogin } from "../../yup/login.shema";
 import { useAppDispath, useAppSelector } from "../../redux/hooks";
 import { mcl } from "../../misc/myClassNames";
@@ -17,7 +18,7 @@ const LoginForm = ({ className }: LoginFormProps) => {
 
    const dispatch = useAppDispath();
 
-   const handleLogin = (email: string, password: string) => {
+   const handleLogin = ({ email, password }: userCredentials) => {
       dispatch(asyncLoginUserCreator({ email, password }));
    };
 
@@ -25,7 +26,7 @@ const LoginForm = ({ className }: LoginFormProps) => {
       <Formik
          initialValues={{ email: "", password: "" }}
          onSubmit={(values) => {
-            handleLogin(values.email, values.password);
+            handleLogin(values);
          }}
          validationSchema={validatationLogin}
       >

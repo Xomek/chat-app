@@ -1,5 +1,6 @@
 import { Formik } from "formik";
 import { BaseComponent } from "../../interfaces/BaseComponent.interface";
+import { userCredentials } from "../../interfaces/userCredentials.interface";
 import { useAppDispath, useAppSelector } from "../../redux/hooks";
 import { validatationReg } from "../../yup/registrations.shema";
 import { asyncCreateUserCreator } from "../../redux/actions/user";
@@ -17,7 +18,7 @@ const RegistrationForm = ({ className }: RegistrationFormProps) => {
 
    const dispatch = useAppDispath();
 
-   const handleRegistration = (email: string, password: string) => {
+   const handleRegistration = ({ email, password }: userCredentials) => {
       dispatch(asyncCreateUserCreator({ email, password }));
    };
 
@@ -25,7 +26,7 @@ const RegistrationForm = ({ className }: RegistrationFormProps) => {
       <Formik
          initialValues={{ email: "", password: "", confirm: "" }}
          onSubmit={(values) => {
-            handleRegistration(values.email, values.password);
+            handleRegistration(values);
          }}
          validationSchema={validatationReg}
       >

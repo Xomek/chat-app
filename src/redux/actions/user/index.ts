@@ -1,3 +1,6 @@
+import { firebaseError } from "../../../interfaces/firebaseError.interface";
+import { IUser } from "../../../interfaces/user.interface";
+import { userCredentials } from "../../../interfaces/userCredentials.interface";
 import {
    CLEAR_USER,
    CREATE_USER,
@@ -11,7 +14,7 @@ import {
    LOADING_USER,
 } from "../../types";
 
-export const asyncLoginUserCreator = (payload: Record<string, string>) => {
+export const asyncLoginUserCreator = (payload: userCredentials) => {
    return { type: ASYNC_LOGIN_USER, payload };
 };
 
@@ -19,15 +22,15 @@ export const loginUserSuccessCreator = () => {
    return { type: LOGIN_USER_SUCCESS };
 };
 
-export const loginUserFailCreator = (payload: any) => {
+export const loginUserFailCreator = (payload: firebaseError) => {
    return { type: LOGIN_USER_FAIL, payload };
 };
 
-export const loginUserCreator = (payload: any) => {
+export const loginUserCreator = (payload: IUser) => {
    return { type: LOGIN_USER, payload };
 };
 
-export const asyncCreateUserCreator = (payload: Record<string, string>) => {
+export const asyncCreateUserCreator = (payload: userCredentials) => {
    return { type: ASYNC_CREATE_USER, payload };
 };
 
@@ -35,11 +38,11 @@ export const createUserSuccessCreator = () => {
    return { type: CREATE_USER_SUCCESS };
 };
 
-export const createUserFailCreator = (payload: any) => {
+export const createUserFailCreator = (payload: firebaseError) => {
    return { type: CREATE_USER_FAIL, payload };
 };
 
-export const createUserCreator = (payload: any) => {
+export const createUserCreator = (payload: IUser) => {
    return { type: CREATE_USER, payload };
 };
 

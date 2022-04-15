@@ -1,5 +1,14 @@
 import { IUser } from "../../../interfaces/user.interface";
-import { CLEAR_USER, CREATE_USER, CREATE_USER_FAIL, CREATE_USER_SUCCESS, LOADING_USER, LOGIN_USER, LOGIN_USER_FAIL, LOGIN_USER_SUCCESS } from "../../types";
+import {
+   CLEAR_USER,
+   CREATE_USER,
+   CREATE_USER_FAIL,
+   CREATE_USER_SUCCESS,
+   LOADING_USER,
+   LOGIN_USER,
+   LOGIN_USER_FAIL,
+   LOGIN_USER_SUCCESS,
+} from "../../types";
 
 interface UserState {
    user: IUser;
