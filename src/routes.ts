@@ -1,7 +1,7 @@
-import { REGISTRATION_ROUTE, LOGIN_ROUTE, HOME_ROUTE } from "./utils/consts";
+import { REGISTRATION_ROUTE, LOGIN_ROUTE, HOME_ROUTE, FORGOT_PASSWORD_ROUTE } from "./utils/consts";
 import { IRoutes } from "./interfaces/routes.interface";
 
-import { Home, Login, Registration } from "./pages";
+import { Home, Login, Registration,ForgotPassword } from "./pages";
 
 export const publicRoutes: IRoutes[] = [
    {
@@ -11,6 +11,10 @@ export const publicRoutes: IRoutes[] = [
    {
       path: LOGIN_ROUTE,
       Component: Login,
+   },
+   {
+      path: FORGOT_PASSWORD_ROUTE,
+      Component: ForgotPassword,
    },
 ];
 

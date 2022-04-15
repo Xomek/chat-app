@@ -9,6 +9,7 @@ import styles from "./RegistrationForm.module.scss";
 
 import { Button, Form, Input } from "../UI";
 import { Title } from "../common";
+import { Link } from "react-router-dom";
 
 interface RegistrationFormProps extends BaseComponent {}
 
@@ -67,6 +68,9 @@ const RegistrationForm = ({ className }: RegistrationFormProps) => {
                <Button className={styles.button} border type="submit" disabled={!isValid && !dirty} onClick={handleSubmit}>
                   Регистрация
                </Button>
+               <Link className={styles.link} to="/login">
+                  Войти
+               </Link>
             </Form>
          )}
       </Formik>

@@ -1,6 +1,6 @@
 import { Formik } from "formik";
 import { BaseComponent } from "../../interfaces/BaseComponent.interface";
-import { asyncLoginUserCreator } from "../../redux/actions/user";
+import { asyncLoginUserCreator, asyncResetUserPassword } from "../../redux/actions/user";
 import { userCredentials } from "../../interfaces/userCredentials.interface";
 import { validatationLogin } from "../../yup/login.shema";
 import { useAppDispath, useAppSelector } from "../../redux/hooks";
@@ -9,6 +9,7 @@ import styles from "./LoginForm.module.scss";
 
 import { Button, Form, Input } from "../UI";
 import { Title } from "../common";
+import { Link } from "react-router-dom";
 
 interface LoginFormProps extends BaseComponent {}
 
@@ -57,6 +58,14 @@ const LoginForm = ({ className }: LoginFormProps) => {
                <Button className={styles.button} border type="submit" disabled={!isValid && !dirty} onClick={handleSubmit}>
                   Войти
                </Button>
+               <div className={styles.links}>
+                  <Link className={styles.link} to="/registration">
+                     Регистрация
+                  </Link>
+                  <Link className={styles.link} to="/forgot">
+                     Забыли пароль?
+                  </Link>
+               </div>
             </Form>
          )}
       </Formik>

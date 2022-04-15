@@ -12,6 +12,7 @@ import {
    CREATE_USER_SUCCESS,
    CREATE_USER_FAIL,
    LOADING_USER,
+   ASYNC_RESET_PASSWORD,
 } from "../../types";
 
 export const asyncLoginUserCreator = (payload: userCredentials) => {
@@ -44,6 +45,10 @@ export const createUserFailCreator = (payload: firebaseError) => {
 
 export const createUserCreator = (payload: IUser) => {
    return { type: CREATE_USER, payload };
+};
+
+export const asyncResetUserPassword = (payload: any) => {
+   return { type: ASYNC_RESET_PASSWORD, payload };
 };
 
 export const loadingUser = () => {

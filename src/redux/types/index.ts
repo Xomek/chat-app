@@ -8,5 +8,6 @@ export const LOGIN_USER_SUCCESS = "LOGIN_USER_SUCCESS";
 export const LOGIN_USER_FAIL = "LOGIN_USER_FAIL";
 export const LOGIN_USER = "LOGIN_USER";
 
+export const ASYNC_RESET_PASSWORD = "ASYNC_RESET_PASSWORD";
 export const LOADING_USER = "LOADING_USER";
 export const CLEAR_USER = "CLEAR_USER";
