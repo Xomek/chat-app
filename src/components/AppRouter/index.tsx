@@ -1,5 +1,6 @@
 import { getAuth } from "firebase/auth";
-import { Routes, Route } from "react-router-dom";
+import { useEffect } from "react";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import { authUser } from "../../redux/actions/user";
 import { useAppDispath, useAppSelector } from "../../redux/hooks";
 import { privateRoutes, publicRoutes } from "../../routes";
@@ -14,6 +15,13 @@ const AppRouter = () => {
       }
    });
    const auth = useAppSelector((state) => state.user.isAuth);
+   const navigate = useNavigate();
+   
+   useEffect(() => {
+      if (auth) {
+         navigate("/home");
+      }
+   }, [auth]);
 
    return (
       <Routes>
