@@ -14,6 +14,7 @@ import {
    LOADING_USER,
    ASYNC_RESET_PASSWORD,
    AUTH_USER,
+   ASYNC_LOGOUT_USER,
 } from "../../types";
 
 export const asyncLoginUserCreator = (payload: userCredentials) => {
@@ -50,6 +51,10 @@ export const createUserCreator = (payload: IUser) => {
 
 export const asyncResetUserPassword = (payload: any) => {
    return { type: ASYNC_RESET_PASSWORD, payload };
+};
+
+export const asyncLogoutUser = () => {
+   return { type: ASYNC_LOGOUT_USER };
 };
 
 export const loadingUser = () => {

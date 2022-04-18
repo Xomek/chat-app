@@ -1,8 +1,8 @@
 import { put, takeLatest, call } from "redux-saga/effects";
 import { firebaseError } from "../../../interfaces/firebaseError.interface";
 import { userCredentials } from "../../../interfaces/userCredentials.interface";
-import { ASYNC_CREATE_USER, ASYNC_LOGIN_USER, ASYNC_RESET_PASSWORD } from "../../types";
-import { createUserWithEmailAndPassword, getAuth, sendPasswordResetEmail, signInWithEmailAndPassword, User } from "firebase/auth";
+import { ASYNC_CREATE_USER, ASYNC_LOGIN_USER, ASYNC_LOGOUT_USER, ASYNC_RESET_PASSWORD } from "../../types";
+import { createUserWithEmailAndPassword, getAuth, sendPasswordResetEmail, signInWithEmailAndPassword, signOut, User } from "firebase/auth";
 import {
    createUserCreator,
    createUserFailCreator,
@@ -46,6 +46,11 @@ async function resetPassword(email: string) {
       });
 }
 
+async function logoutUser() {
+   const auth = getAuth();
+   signOut(auth);
+}
+
 export function* userWorkerLogin({ payload }: any) {
    try {
       yield put(loadingUser());
@@ -76,10 +81,19 @@ export function* userWorkerReset(action: any) {
    }
 }
 
+export function* userWorkerLogout() {
+   try {
+      yield call(logoutUser);
+   } catch (error) {
+      yield put(createUserFailCreator(error as firebaseError));
+   }
+}
+
 export function* userWatcher() {
    yield takeLatest(ASYNC_LOGIN_USER, userWorkerLogin);
    yield takeLatest(ASYNC_CREATE_USER, userWorkerCreate);
    yield takeLatest(ASYNC_RESET_PASSWORD, userWorkerReset);
+   yield takeLatest(ASYNC_LOGOUT_USER, userWorkerLogout);
 }
 
 export function* userSaga() {
