@@ -4,6 +4,7 @@ import { mcl } from "../../misc/myClassNames";
 import styles from "./Home.module.scss";
 
 import { Header } from "../../components";
+import Layout from "../Layout";
 
 interface HomeProps extends BaseComponent {}
 
@@ -12,8 +13,9 @@ const Home: FC<HomeProps> = ({ className }) => {
 
    return (
       <>
-         <Header />
-         <div className={HomeStyles}></div>;
+         <Layout>
+            <div className={HomeStyles}></div>;
+         </Layout>
       </>
    );
 };
