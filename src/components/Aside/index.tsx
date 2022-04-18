@@ -5,7 +5,7 @@ import styles from "./Aside.module.scss";
 export interface AsideProps extends BaseComponent {}
 
 const Aside = ({ className }: AsideProps) => {
-   const AsideFormStyles = mcl(styles.loginform, className);
+   const AsideFormStyles = mcl(styles.aside, className);
 
    return <aside className={AsideFormStyles}></aside>;
 };

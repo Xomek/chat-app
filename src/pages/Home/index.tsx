@@ -14,7 +14,7 @@ const Home: FC<HomeProps> = ({ className }) => {
    return (
       <>
          <Layout>
-            <div className={HomeStyles}></div>;
+            <div className={HomeStyles}></div>
          </Layout>
       </>
    );

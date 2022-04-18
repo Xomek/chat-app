@@ -1,0 +1,22 @@
+.header {
+   width: 100%;
+   padding: 40px 30px;
+   box-shadow: 4px 4px 10px #eff1f3;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+
+.title {
+   font-size: 38px;
+   color: #434343;
+}
+
+.button {
+   background: transparent;
+   border: 2px solid #434343;
+   color: #434343;
+   font-weight: 700;
+   border-radius: 4px;
+   padding: 8px 16px;
+}
