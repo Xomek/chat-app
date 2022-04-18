@@ -1,5 +1,3 @@
-import { FC } from "react";
-import { getAuth, signOut } from "firebase/auth";
 import { BaseComponent } from "../../interfaces/BaseComponent.interface";
 import { mcl } from "../../misc/myClassNames";
 import { Button } from "../UI";
@@ -10,8 +8,7 @@ import { useNavigate } from "react-router-dom";
 
 export interface HeaderProps extends BaseComponent {}
 
-const Header: FC<HeaderProps> = ({ className }: HeaderProps) => {
-   const auth = getAuth();
+const Header = ({ className }: HeaderProps) => {
    const navigate = useNavigate();
    const dispatch = useAppDispath();
    const HeaderFormStyles = mcl(styles.loginform, className);

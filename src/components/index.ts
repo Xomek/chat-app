@@ -4,4 +4,5 @@ import RegistrationForm from "./RegistrationForm"
 import ForgotPasswordForm from "./ForgotPasswordForm"
 import UdpatePasswordForm from "./UdpatePasswordForm"
 import Header from "./Header"
-export { AppRouter, LoginForm, RegistrationForm, ForgotPasswordForm, UdpatePasswordForm, Header }
+import Aside from "./Aside"
+export { AppRouter, LoginForm, RegistrationForm, ForgotPasswordForm, UdpatePasswordForm, Header, Aside }
