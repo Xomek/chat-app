@@ -6,4 +6,5 @@ import UdpatePasswordForm from "./UdpatePasswordForm"
 import Header from "./Header"
 import Aside from "./Aside"
 import Users from "./Users"
-export { AppRouter, LoginForm, RegistrationForm, ForgotPasswordForm, UdpatePasswordForm, Header, Aside, Users }
+import Avatar from "./Avatar"
+export { AppRouter, LoginForm, RegistrationForm, ForgotPasswordForm, UdpatePasswordForm, Header, Aside, Users, Avatar }
