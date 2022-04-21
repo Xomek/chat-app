@@ -4,12 +4,12 @@ import styles from "./Avatar.module.scss";
 
 export interface AvatarProps extends BaseComponent {
    imgUrl?: string;
-   status: string;
+   status?: string;
 }
 
 const Avatar = ({
    imgUrl = "https://img.myloview.ru/posters/people-icon-isolated-on-white-background-person-icon-user-vector-icon-400-219882240.jpg",
-   status,
+   status = "online",
    className,
 }: AvatarProps) => {
    const AvatarStyles = mcl(styles.avatar, className);

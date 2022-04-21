@@ -1,5 +1,6 @@
 import { put, takeLatest, call } from "redux-saga/effects";
 import { firebaseError } from "../../../interfaces/firebaseError.interface";
+import { auth } from "../../../firebase/firebase";
 import { userCredentials } from "../../../interfaces/userCredentials.interface";
 import { ASYNC_CREATE_USER, ASYNC_LOGIN_USER, ASYNC_LOGOUT_USER, ASYNC_RESET_PASSWORD } from "../../types";
 import { createUserWithEmailAndPassword, getAuth, sendPasswordResetEmail, signInWithEmailAndPassword, signOut, User } from "firebase/auth";
@@ -14,7 +15,6 @@ import {
 } from "../../actions/user";
 
 async function loginUser({ email, password }: userCredentials) {
-   const auth = getAuth();
    return signInWithEmailAndPassword(auth, email, password)
       .then(({ user }) => {
          return user;
@@ -25,7 +25,6 @@ async function loginUser({ email, password }: userCredentials) {
 }
 
 async function createUser({ email, password }: userCredentials) {
-   const auth = getAuth();
    return createUserWithEmailAndPassword(auth, email, password)
       .then(({ user }) => {
          return user;
@@ -36,7 +35,6 @@ async function createUser({ email, password }: userCredentials) {
 }
 
 async function resetPassword(email: string) {
-   const auth = getAuth();
    return sendPasswordResetEmail(auth, email)
       .then((data) => {
          return data;
@@ -47,7 +45,6 @@ async function resetPassword(email: string) {
 }
 
 async function logoutUser() {
-   const auth = getAuth();
    signOut(auth);
 }
 

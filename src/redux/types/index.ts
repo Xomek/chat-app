@@ -13,3 +13,6 @@ export const ASYNC_LOGOUT_USER = "ASYNC_LOGOUT_USER";
 export const LOADING_USER = "LOADING_USER";
 export const CLEAR_USER = "CLEAR_USER";
 export const AUTH_USER = "AUTH_USER";
+
+export const ASYNC_MESSAGE_GET_ALL = "ASYNC_MESSAGE_GET_ALL";
+export const SET_MESSAGES = "SET_MESSAGES";

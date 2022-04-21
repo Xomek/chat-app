@@ -1,8 +1,11 @@
 import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
    apiKey: "AIzaSyCieS5h8XIGQStlP-ptzmnV5R82KkPK8MY",
    authDomain: "chat-a5e80.firebaseapp.com",
+   databaseURL: "http://chat-a5e80 .europe-west1.firebasedatabase.app",
    projectId: "chat-a5e80",
    storageBucket: "chat-a5e80.appspot.com",
    messagingSenderId: "888721054600",
@@ -10,3 +13,7 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+export { auth, db };
