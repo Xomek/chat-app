@@ -3,10 +3,11 @@ import { BaseComponent } from "../../interfaces/BaseComponent.interface";
 import { mcl } from "../../misc/myClassNames";
 import styles from "./Home.module.scss";
 
-import { Users } from "../../components";
 import Layout from "../Layout";
 import { useAppDispath, useAppSelector } from "../../redux/hooks";
-import { getAllMessagesCreator } from "../../redux/actions/message";
+import { getAllMessagesCreator, setMessages } from "../../redux/actions/message";
+import { collection, onSnapshot } from "firebase/firestore";
+import { db } from "../../firebase/firebase";
 
 interface HomeProps extends BaseComponent {}
 
@@ -16,17 +17,21 @@ const Home: FC<HomeProps> = ({ className }) => {
    const dispatch = useAppDispath();
 
    useEffect(() => {
-      dispatch(getAllMessagesCreator());
-      console.log(messages);
+      const messages = collection(db, "messages");
+
+      onSnapshot(messages, (querySnapshot) => {
+         const messagesArr: any = [];
+         querySnapshot.forEach((doc) => {
+            messagesArr.push(doc.data().text);
+         });
+         dispatch(setMessages(messagesArr));
+      });
    }, []);
 
    return (
       <>
          <Layout>
-            <div className={HomeStyles}>
-               <Users users={[]} />
-               {messages && messages.map((message: any) => <div>{message.text}</div>)}
-            </div>
+            <div className={HomeStyles}>{messages && messages.map((message: any) => <div key={message}>{message}</div>)}</div>
          </Layout>
       </>
    );

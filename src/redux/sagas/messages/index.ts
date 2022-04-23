@@ -1,22 +1,20 @@
-import { collection, DocumentData, getDocs } from "firebase/firestore";
+import { collection, doc, getDoc, Firestore, getDocs, onSnapshot, DocumentData } from "firebase/firestore";
+import { put, takeLatest } from "redux-saga/effects";
 import { db } from "../../../firebase/firebase";
-import { call, put, takeLatest } from "redux-saga/effects";
-import { ASYNC_MESSAGE_GET_ALL } from "../../types";
 import { setMessages } from "../../actions/message";
+import { ASYNC_MESSAGE_GET_ALL } from "../../types";
 
-async function getCities(db: any) {
-   console.log(123);
-   const citiesCol = collection(db, "messages");
-   const citySnapshot = await getDocs(citiesCol);
-   const cityList = citySnapshot.docs.map((doc) => doc.data());
-   return cityList;
+async function getMessages(db: Firestore) {
+  
 }
 
 export function* messageWorkerGetAll() {
    try {
-      const messages: DocumentData = yield call(getCities, db);
+      const messages: DocumentData = yield getMessages(db);
       yield put(setMessages(messages));
-   } catch (error) {}
+   } catch (error) {
+      console.log(error);
+   }
 }
 
 export function* messageWatcher() {

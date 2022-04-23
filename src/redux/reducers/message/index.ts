@@ -1,4 +1,4 @@
-import { ASYNC_MESSAGE_GET_ALL, SET_MESSAGES } from "../../types";
+import { SET_MESSAGES } from "../../types";
 
 interface MessageState {
    messages: [];
