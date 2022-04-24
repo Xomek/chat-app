@@ -6,11 +6,13 @@ import { useAppDispath, useAppSelector } from "../../redux/hooks";
 import { asyncLogoutUser } from "../../redux/actions/user";
 import { useNavigate } from "react-router-dom";
 import { Title } from "../common";
+import { auth } from "../../firebase/firebase";
 
 export interface HeaderProps extends BaseComponent {}
 
 const Header = ({ className }: HeaderProps) => {
-   const userEmail = useAppSelector((state) => state.user.user.email);
+   const userEmail = auth.currentUser?.email;
+   console.log(userEmail);
    const navigate = useNavigate();
    const dispatch = useAppDispath();
    const HeaderFormStyles = mcl(styles.header, className);
