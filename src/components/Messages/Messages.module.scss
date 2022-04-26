@@ -23,5 +23,11 @@
 }
 
 .email {
+   font-style: italic;
+   display: block;
+}
+
+.text {
+   flex: 1;
    font-weight: 700;
 }

@@ -1,10 +1,10 @@
-import AppRouter from "./AppRouter"
-import LoginForm from "./LoginForm"
-import RegistrationForm from "./RegistrationForm"
-import ForgotPasswordForm from "./ForgotPasswordForm"
-import UdpatePasswordForm from "./UdpatePasswordForm"
-import Header from "./Header"
-import Aside from "./Aside"
-import Users from "./Users"
-import Avatar from "./Avatar"
-export { AppRouter, LoginForm, RegistrationForm, ForgotPasswordForm, UdpatePasswordForm, Header, Aside, Users, Avatar }
+import AppRouter from "./AppRouter";
+import LoginForm from "./LoginForm";
+import RegistrationForm from "./RegistrationForm";
+import ForgotPasswordForm from "./ForgotPasswordForm";
+import UdpatePasswordForm from "./UdpatePasswordForm";
+import Header from "./Header";
+import Aside from "./Aside";
+import Messages from "./Messages";
+import Avatar from "./Avatar";
+export { AppRouter, LoginForm, RegistrationForm, ForgotPasswordForm, UdpatePasswordForm, Header, Aside, Messages, Avatar };

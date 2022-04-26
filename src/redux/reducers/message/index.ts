@@ -1,7 +1,8 @@
 import { SET_MESSAGES } from "../../types";
+import { IMessage } from "../../../interfaces/message.interface";
 
 interface MessageState {
-   messages: [];
+   messages: IMessage[];
 }
 
 const initialState: MessageState = {
